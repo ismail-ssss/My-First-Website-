@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Wall Clock</title>
+    <style>
+      body {
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+      }
+
+      .clock {
+        width: 500px;
+        height: 500px;
+        background-color: #fff;
+        border: 10px solid #333;
+        border-radius: 50%;
+        position: relative;
+        margin: 50px auto;
+      }
+
+      .hour-hand {
+        width: 6px;
+        height: 70px;
+        background-color: #333;
+        position: absolute;
+        top: 36%;
+        left: 50%;
+        transform-origin: bottom center;
+        transform: translateX(-50%) rotate(90deg);
+      }
+
+      .minute-hand {
+        width: 4px;
+        height: 100px;
+        background-color: #333;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform-origin: bottom center;
+        transform: translateX(-50%) rotate(180deg);
+      }
+
+      .second-hand {
+        width: 2px;
+        height: 120px;
+        background-color: red;
+        position: absolute;
+        top: 26%;
+        left: 50%;
+        transform-origin: bottom center;
+        transform: translateX(-50%) rotate(270deg);
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        background-color: #333;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .numbers {
+        position: absolute;
+        top: -38%;
+        left: 7%;
+        font-size: 20px;
+        color: #333;
+        transform: translate(-50%, -50%);
+      }
+
+      .numbers span {
+        padding-top: 155px;
+        padding-bottom: 213px;
+        padding-right: 160px;
+        padding-left: 110px;
+        margin-top: 45px;
+        margin-left: 75px;
+        display: block;
+        position: absolute;
+        transform-origin: bottom;
+      }
+
+      .numbers span:nth-child(1) {
+        transform: rotate(6deg);
+      }
+
+      .numbers span:nth-child(2) {
+        transform: rotate(calc(6deg + (6deg * 1)));
+      }
+
+      .numbers span:nth-child(3) {
+        transform: rotate(calc(6deg + (6deg * 2)));
+      }
+      .numbers span:nth-child(4) {
+        transform: rotate(calc(6deg + (6deg * 3)));
+      }
+      .numbers span:nth-child(5) {
+        transform: rotate(calc(6deg + (6deg * 4)));
+      }
+      .numbers span:nth-child(6) {
+        transform: rotate(calc(6deg + (6deg * 5)));
+      }
+      .numbers span:nth-child(7) {
+        transform: rotate(calc(6deg + (6deg * 6)));
+      }
+      .numbers span:nth-child(8) {
+        transform: rotate(calc(6deg + (6deg * 7)));
+      }
+      .numbers span:nth-child(9) {
+        transform: rotate(calc(6deg + (6deg * 8)));
+      }
+      .numbers span:nth-child(10) {
+        transform: rotate(calc(6deg + (6deg * 9)));
+      }
+      .numbers span:nth-child(11) {
+        transform: rotate(calc(6deg + (6deg * 10)));
+      }
+      .numbers span:nth-child(12) {
+        transform: rotate(calc(6deg + (6deg * 11)));
+      }
+      .numbers span:nth-child(13) {
+        transform: rotate(calc(6deg + (6deg * 12)));
+      }
+      .numbers span:nth-child(14) {
+        transform: rotate(calc(6deg + (6deg * 13)));
+      }
+      .numbers span:nth-child(15) {
+        transform: rotate(calc(6deg + (6deg * 14)));
+      }
+      .numbers span:nth-child(16) {
+        transform: rotate(calc(6deg + (6deg * 15)));
+      }
+      .numbers span:nth-child(17) {
+        transform: rotate(calc(6deg + (6deg * 16)));
+      }
+      .numbers span:nth-child(18) {
+        transform: rotate(calc(6deg + (6deg * 17)));
+      }
+      .numbers span:nth-child(19) {
+        transform: rotate(calc(6deg + (6deg * 18)));
+      }
+      .numbers span:nth-child(20) {
+        transform: rotate(calc(6deg + (6deg * 19)));
+      }
+      .numbers span:nth-child(21) {
+        transform: rotate(calc(6deg + (6deg * 20)));
+      }
+      .numbers span:nth-child(22) {
+        transform: rotate(calc(6deg + (6deg * 21)));
+      }
+      .numbers span:nth-child(23) {
+        transform: rotate(calc(6deg + (6deg * 22)));
+      }
+      .numbers span:nth-child(24) {
+        transform: rotate(calc(6deg + (6deg * 23)));
+      }
+      .numbers span:nth-child(25) {
+        transform: rotate(calc(6deg + (6deg * 24)));
+      }
+      .numbers span:nth-child(26) {
+        transform: rotate(calc(6deg + (6deg * 25)));
+      }
+      .numbers span:nth-child(27) {
+        transform: rotate(calc(6deg + (6deg * 26)));
+      }
+      .numbers span:nth-child(28) {
+        transform: rotate(calc(6deg + (6deg * 27)));
+      }
+      .numbers span:nth-child(29) {
+        transform: rotate(calc(6deg + (6deg * 28)));
+      }
+      .numbers span:nth-child(30) {
+        transform: rotate(calc(6deg + (6deg * 29)));
+      }
+      .numbers span:nth-child(31) {
+        transform: rotate(calc(6deg + (6deg * 30)));
+      }
+      .numbers span:nth-child(32) {
+        transform: rotate(calc(6deg + (6deg * 31)));
+      }
+      .numbers span:nth-child(33) {
+        transform: rotate(calc(6deg + (6deg * 32)));
+      }
+      .numbers span:nth-child(34) {
+        transform: rotate(calc(6deg + (6deg * 33)));
+      }
+      .numbers span:nth-child(35) {
+        transform: rotate(calc(6deg + (6deg * 34)));
+      }
+      .numbers span:nth-child(36) {
+        transform: rotate(calc(6deg + (6deg * 35)));
+      }
+      .numbers span:nth-child(37) {
+        transform: rotate(calc(6deg + (6deg * 36)));
+      }
+      .numbers span:nth-child(38) {
+        transform: rotate(calc(6deg + (6deg * 37)));
+      }
+      .numbers span:nth-child(39) {
+        transform: rotate(calc(6deg + (6deg * 38)));
+      }
+      .numbers span:nth-child(40) {
+        transform: rotate(calc(6deg + (6deg * 39)));
+      }
+      .numbers span:nth-child(41) {
+        transform: rotate(calc(6deg + (6deg * 40)));
+      }
+      .numbers span:nth-child(42) {
+        transform: rotate(calc(6deg + (6deg * 41)));
+      }
+      .numbers span:nth-child(43) {
+        transform: rotate(calc(6deg + (6deg * 42)));
+      }
+      .numbers span:nth-child(44) {
+        transform: rotate(calc(6deg + (6deg * 43)));
+      }
+      .numbers span:nth-child(45) {
+        transform: rotate(calc(6deg + (6deg * 44)));
+      }
+      .numbers span:nth-child(46) {
+        transform: rotate(calc(6deg + (6deg * 45)));
+      }
+      .numbers span:nth-child(47) {
+        transform: rotate(calc(6deg + (6deg * 46)));
+      }
+      .numbers span:nth-child(48) {
+        transform: rotate(calc(6deg + (6deg * 47)));
+      }
+      .numbers span:nth-child(49) {
+        transform: rotate(calc(6deg + (6deg * 48)));
+      }
+      .numbers span:nth-child(50) {
+        transform: rotate(calc(6deg + (6deg * 49)));
+      }
+      .numbers span:nth-child(51) {
+        transform: rotate(calc(6deg + (6deg * 50)));
+      }
+      .numbers span:nth-child(52) {
+        transform: rotate(calc(6deg + (6deg * 51)));
+      }
+      .numbers span:nth-child(53) {
+        transform: rotate(calc(6deg + (6deg * 52)));
+      }
+      .numbers span:nth-child(54) {
+        transform: rotate(calc(6deg + (6deg * 53)));
+      }
+      .numbers span:nth-child(55) {
+        transform: rotate(calc(6deg + (6deg * 54)));
+      }
+      .numbers span:nth-child(56) {
+        transform: rotate(calc(6deg + (6deg * 55)));
+      }
+      .numbers span:nth-child(57) {
+        transform: rotate(calc(6deg + (6deg * 56)));
+      }
+      .numbers span:nth-child(58) {
+        transform: rotate(calc(6deg + (6deg * 57)));
+      }
+      .numbers span:nth-child(59) {
+        transform: rotate(calc(6deg + (6deg * 58)));
+      }
+      .numbers span:nth-child(60) {
+        transform: rotate(calc(6deg + (6deg * 59)));
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Digital Wall Clock</h1>
+    </header>
+    <div class="clock">
+      <div class="hour-hand" id="hourHand"></div>
+      <div class="minute-hand" id="minuteHand"></div>
+      <div class="second-hand" id="secondHand"></div>
+      <div class="dot"></div>
+      <div class="numbers">
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>1</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>2</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>3</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>4</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>5</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>6</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>7</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>8</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>9</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>10</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>11</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+        <span>12</span>
+      </div>
+    </div>
+    <script>
+      function rotateClockHands() {
+        const now = new Date();
+        const hours = now.getHours() % 12;
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        const hourHand = document.getElementById("hourHand");
+        const minuteHand = document.getElementById("minuteHand");
+        const secondHand = document.getElementById("secondHand");
+
+        const hourDegrees = hours * 30 + minutes * 0.5; // Each hour is 30 degrees, each minute is 0.5 degrees
+        const minuteDegrees = minutes * 6 + seconds * 0.1; // Each minute is 6 degrees, each second is 0.1 degrees
+        const secondDegrees = seconds * 6; // Each second is 6 degrees
+
+        hourHand.style.transform = `translateX(-50%) rotate(${hourDegrees}deg)`;
+        minuteHand.style.transform = `translateX(-50%) rotate(${minuteDegrees}deg)`;
+        secondHand.style.transform = `translateX(-50%) rotate(${secondDegrees}deg)`;
+      }
+
+      // Update clock hands every second
+      setInterval(rotateClockHands, 1000);
+
+      // Initial call to rotate clock hands immediately
+      rotateClockHands();
+    </script>
+  </body>
+</html>
