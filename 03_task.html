@@ -12,11 +12,49 @@
         font-family: Arial, sans-serif;
       }
 
-      header {
+      .footer {
         background-color: #333;
         color: #fff;
-        padding: 10px 0;
         text-align: center;
+        padding: 20px 0;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 10px 0;
+        z-index: 1000;
+      }
+      .logo {
+        color: #fff;
+        font-size: 24px;
+        margin-left: 20px;
+        text-decoration: none;
+      }
+      nav {
+        float: right;
+        margin-right: 20px;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      nav ul li {
+        display: inline;
+        margin-left: 20px;
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
       }
 
       .clock {
@@ -280,7 +318,16 @@
   </head>
   <body>
     <header>
-      <h1>Digital Wall Clock</h1>
+      <a href="#" class="logo">Your Logo</a>
+      <nav>
+        <ul>
+          <li><a href="00_index.html">Home</a></li>
+          <li><a href="01_task.html">Calculator</a></li>
+          <li><a href="02_task.html">CountDown</a></li>
+          <li><a href="03_task.html">Wall Watch</a></li>
+          <li><a href="04_task.html">Text Styling</a></li>
+        </ul>
+      </nav>
     </header>
     <div class="clock">
       <div class="hour-hand" id="hourHand"></div>
@@ -350,6 +397,11 @@
         <span>12</span>
       </div>
     </div>
+
+    <footer class="footer">
+      <p>&copy; 2024 Website. All rights reserved.</p>
+    </footer>
+
     <script>
       function rotateClockHands() {
         const now = new Date();
